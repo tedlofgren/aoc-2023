@@ -7,16 +7,16 @@ int main(int num_args, char** args)
 {
 	FILE* input_file = nullptr;
 	errno_t err = fopen_s(&input_file, "./input.txt", "rb");
-	if (err != 0)
+	if (err != 0l)
 		return -1;
 
-	uint32_t sum_of_calibration_values = 0;
+	uint32_t sum_of_calibration_values = 0u;
 
 	constexpr const char* LETTER_DIGITS[] = { "one", "two", "three", "four", "five", "six", "seven", "eight", "nine" };
-	constexpr const uint32_t LETTER_DIGIT_LENGTHS[] = { 3, 3, 5, 4, 4, 3, 5, 5, 4 };
+	constexpr const uint32_t LETTER_DIGIT_LENGTHS[] = { 3u, 3u, 5u, 4u, 4u, 3u, 5u, 5u, 4u };
 	constexpr uint32_t NUM_LETTER_DIGITS = sizeof(LETTER_DIGITS) / sizeof(char*);
 
-	constexpr uint32_t DIGITS_STORAGE_SIZE = 16;
+	constexpr uint32_t DIGITS_STORAGE_SIZE = 16u;
 	int8_t digits_storage[DIGITS_STORAGE_SIZE];
 
 	constexpr uint32_t BUFFER_SIZE = 256u;
@@ -102,7 +102,7 @@ int main(int num_args, char** args)
 
 			char calibration_string[3];
 			calibration_string[0] = digits_storage[0];
-			calibration_string[1] = digits_storage[num_digits - 1];
+			calibration_string[1] = digits_storage[num_digits - 1u];
 			calibration_string[2] = 0;
 
 			sum_of_calibration_values += (uint32_t)strtol(calibration_string, nullptr, 10l);

@@ -6,14 +6,14 @@
 int main(int num_args, char** args)
 {
 	FILE* input_file = nullptr;
-	errno_t err = fopen_s(&input_file, "./input.txt", "r");
-	if (err != 0)
+	errno_t err = fopen_s(&input_file, "./input.txt", "rb");
+	if (err != 0l)
 		return -1;
 
-	constexpr uint32_t DIGITS_STORAGE_SIZE = 8;
+	constexpr uint32_t DIGITS_STORAGE_SIZE = 8u;
 	int8_t digits_storage[DIGITS_STORAGE_SIZE];
 
-	uint32_t sum_of_calibration_values = 0;
+	uint32_t sum_of_calibration_values = 0u;
 
 	constexpr uint32_t BUFFER_SIZE = 256u;
 	int8_t buffer[BUFFER_SIZE];
@@ -50,30 +50,30 @@ int main(int num_args, char** args)
 
 			// store digits from current string
 
-			uint32_t num_digits = 0;
+			uint32_t num_digits = 0u;
 			for (uint32_t i = current_pos; i < end_pos; ++i) {
 				const int8_t& item = buffer[i];
 				if (item < 48l || item > 57l)
 					continue;
 
-				if (num_digits == DIGITS_STORAGE_SIZE - 1)
+				if (num_digits == DIGITS_STORAGE_SIZE - 1u)
 					return -3;
 
 				digits_storage[num_digits++] = item;
 			}
 
-			if (num_digits == 0)
+			if (num_digits == 0u)
 				return -4;
 
-			if (num_digits == 1)
+			if (num_digits == 1u)
 				digits_storage[num_digits++] = digits_storage[0];
 
 			char calibration_string[3];
 			calibration_string[0] = digits_storage[0];
-			calibration_string[1] = digits_storage[num_digits - 1];
+			calibration_string[1] = digits_storage[num_digits - 1u];
 			calibration_string[2] = 0;
 
-			sum_of_calibration_values += (uint32_t)strtol(calibration_string, nullptr, 10);
+			sum_of_calibration_values += (uint32_t)strtol(calibration_string, nullptr, 10l);
 
 			current_pos = end_pos + 1u;
 		}
