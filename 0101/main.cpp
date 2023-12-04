@@ -21,7 +21,7 @@ int main(int num_args, char** args)
 	uint32_t buffer_offset = 0u;
 	uint32_t buffer_read_bytes = BUFFER_SIZE;
 	while (true) {
-		const uint32_t bytes_read = (uint32_t)fread_s(buffer + buffer_offset, BUFFER_SIZE, sizeof(int8_t), buffer_read_bytes, input_file);
+		const uint32_t bytes_read = (uint32_t)fread(buffer + buffer_offset, sizeof(int8_t), buffer_read_bytes, input_file);
 		if (bytes_read == 0u)
 			break;
 
