@@ -44,8 +44,6 @@ int main(int num_args, char** args)
 		if (bytes_available == 0u)
 			break;
 
-		const bool end_of_file = bytes_read < buffer_read_bytes;
-
 		uint32_t current_pos = 0u;
 		while (true) {
 			uint32_t end_pos = current_pos;
